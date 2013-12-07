@@ -80,8 +80,7 @@ void client( char *host, int op_mode, char * port)
       printf("Looking for: %s %s \n", host,  port);
 
     /*
-     * La función getaddrinfo hace la consulta DNS pertinente 
-     * si la dirección no es directamente una dirección ip
+     * addrinfo -> DNS
      */
      if ((rv = getaddrinfo(host, port, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
