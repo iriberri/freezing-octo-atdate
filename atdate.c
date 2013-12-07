@@ -147,7 +147,7 @@ inet_ntop(p->ai_family, get_in_addr((struct sockaddr *)p->ai_addr),
             time=localtime(&t);
             t= t - 2208988800u;
             time=localtime(&t);
-            strftime ( date, size , "This is the time: %d %b %Y %H:%M:%S %Z\n", time);
+            strftime ( date, size , "%d %b %Y %H:%M:%S %Z\n", time);
             printf("%s\n", date);
 
         }
