@@ -101,13 +101,13 @@ void client( char *host, int op_mode, char * port)
     continue;
 }
 
-if(op_mode==CLIENT_TCP_MODE){
+//f(op_mode==CLIENT_TCP_MODE){
     if (connect(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
         close(sockfd);
         perror("client: connect");
         continue;
     }
-}
+//}
 break;
 }
 
@@ -167,7 +167,9 @@ if(op_mode == CLIENT_UDP_MODE){
      int n;
      int read_out;
 
-     if((n= sendto(sockfd, &buf, 0 , 0, server->ai_addr, server->ai_addrlen))==-1)
+    // if((n= sendto(sockfd, &buf, 0 , 0, server->ai_addr, server->ai_addrlen))==-1)
+         if((n= send(sockfd, &buf, 0 , 0))==-1)
+
      {
         printf("Error when sending to the server\n");
         exit(-1);
