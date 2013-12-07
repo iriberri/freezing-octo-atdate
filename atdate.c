@@ -102,11 +102,11 @@ void client( char *host, int op_mode, char * port)
 }
 
 //f(op_mode==CLIENT_TCP_MODE){
-    if (connect(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
-        close(sockfd);
-        perror("client: connect");
-        continue;
-    }
+if (connect(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
+    close(sockfd);
+    perror("client: connect");
+    continue;
+}
 //}
 break;
 }
@@ -168,7 +168,7 @@ if(op_mode == CLIENT_UDP_MODE){
      int read_out;
 
     // if((n= sendto(sockfd, &buf, 0 , 0, server->ai_addr, server->ai_addrlen))==-1)
-         if((n= send(sockfd, &buf, 0 , 0))==-1)
+     if((n= send(sockfd, &buf, 0 , 0))==-1)
 
      {
         printf("Error when sending to the server\n");
@@ -314,22 +314,22 @@ if (listen(sockfd, BACKLOG) == -1) {
                   printf("Send packet to %s, sockfd: %d\n", s, new_fd);
               if (send(new_fd, &buff, size, 0) ==-1)
               {
-               fprintf(stderr, "Error: send %s\n", strerror(errno));
-               exit(1);
+                 fprintf(stderr, "Error: send %s\n", strerror(errno));
+                 exit(1);
+             }
+             else
+             {
+                 if(debug)
+                   printf("Packet has been sent!\n");
            }
-           else
-           {
-               if(debug)
-                 printf("Packet has been sent!\n");
-         }
 
-         while(time(NULL)!=t+1 && time(0)<t+2);
+           while(time(NULL)!=t+1 && time(0)<t+2);
         //Waits for a second
-     }
+       }
 
-     close(new_fd);
- }
- close(new_fd);
+       close(new_fd);
+   }
+   close(new_fd);
 }
 }
 
@@ -347,7 +347,7 @@ int main(int argc, char *argv[]) {
     char* serverhost_str;
     char* port_str;
     char* mode_str;
-    char* port = 37;
+    //char* port;
     for (param_c = 1; param_c < argc; param_c++) {
         if (strcmp("-d", argv[param_c]) == 0) {
             debug = 1;
@@ -362,7 +362,7 @@ int main(int argc, char *argv[]) {
                 mode_str = strdup(argv[param_c + 1]);
             } else if (strcmp("-p", argv[param_c]) == 0) {
                 port_str = strdup(argv[param_c + 1]);
-                port = atoi(port_str);
+                //port = atoi(port_str);
             } else {
                 printf("ERROR: Parameter %s not recognized.\n", argv[param_c]);
                 return -1;
@@ -372,15 +372,15 @@ int main(int argc, char *argv[]) {
         }
 
     }
-
+    port_str = strdup("37");
     if (strcmp(mode_str, "cu") == 0) {
         client(serverhost_str, CLIENT_UDP_MODE, port_str);
     }else if (strcmp(mode_str, "ct") == 0) {
         client(serverhost_str, CLIENT_TCP_MODE, port_str);
     }else if (strcmp(mode_str, "s") == 0) {
-        char prt[6] = "6283";
-        port = prt;
-        server(port);
+        port_str = strdup("6283");
+        //port = prt;
+        server(port_str);
     }else{
         printf("Incorrect mode.\n");
     }
