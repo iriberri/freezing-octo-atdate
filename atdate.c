@@ -190,7 +190,7 @@ if(op_mode == CLIENT_UDP_MODE){
   time=localtime(&buf);
   buf= buf - 2208988800u;
   time=localtime(&buf);
-  strftime ( date, size , "This is the time: %d %b %Y %H:%M:%S %Z\n", time);
+  strftime ( date, size , "%d %b %Y %H:%M:%S %Z\n", time);
   printf("%s\n", date);
 
   close(sockfd);
