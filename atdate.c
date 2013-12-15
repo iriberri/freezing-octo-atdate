@@ -104,6 +104,7 @@ void client( char *host, int op_mode, char * port)
 	//f(op_mode==CLIENT_TCP_MODE){
 	  if (connect(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
 	    close(sockfd);
+          if(debug)
 	    perror("client: connect");
 	continue;
 	  }
@@ -175,6 +176,7 @@ void client( char *host, int op_mode, char * port)
       if((n= send(sockfd, &buf, 0 , 0))==-1)
 	
       {
+            if(debug)
 	printf("Error when sending to the server\n");
 	exit(-1);
       }
@@ -208,7 +210,7 @@ void client( char *host, int op_mode, char * port)
 
 void server(char* port)
 {
-  printf("Starting server\n");
+  printf("TIME server running at port %d\n", atoi(port));
   int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd
   struct addrinfo hints, *servinfo, *p;
   struct sockaddr_storage their_addr; // connector's address information
