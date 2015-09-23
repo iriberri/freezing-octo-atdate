@@ -94,7 +94,6 @@ void client( char *host, int op_mode, char * port)
   // loop through all the results and connect to the first we can
     
     for(p = servinfo; p != NULL; p = p->ai_next) {
-      //printf("entra en for\n");
       if ((sockfd = socket(p->ai_family, p->ai_socktype,
 	p->ai_protocol)) == -1) {
 	perror("client: socket");
@@ -134,7 +133,7 @@ void client( char *host, int op_mode, char * port)
       if(debug)
 	printf("Waits for packet\n");
       
-      while(1)//reception loooooop
+      while(1)//reception loop
         {
 	  n = recv(sockfd, &t, outchars, 0);
 	  
@@ -142,8 +141,7 @@ void client( char *host, int op_mode, char * port)
 	    fprintf(stderr, "***Socket read failed: %s\n", strerror(errno));
 	  t=ntohl(t);
 
-	  //if(n==4)
-	  //{
+
 	    if(debug)
 	      printf("Received bytes: %d\n", n);
 	    
@@ -154,7 +152,7 @@ void client( char *host, int op_mode, char * port)
 
 	    printf("%s\n", date);
 	    
-	 // }
+
 	  sleep(1);
 	  
 	}
@@ -172,7 +170,6 @@ void client( char *host, int op_mode, char * port)
       int n;
       int read_out;
       
-      // if((n= sendto(sockfd, &buf, 0 , 0, server->ai_addr, server->ai_addrlen))==-1)
       if((n= send(sockfd, &buf, 0 , 0))==-1)
 	
       {
