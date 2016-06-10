@@ -3,7 +3,10 @@ freezing-octo-atdate
 
 Based on the stream socket client demo contained in Beej's Guide to Network Programming.
 
-> atdate [-h serverhost] [-p port] [-m cu | ct | s ] [-d]
+Usage:
+```
+atdate [-h serverhost] [-p port] [-m cu | ct | s ] [-d]
+
 
 * -h serverhost: TIME server 
 * -p port: default port is 37.
@@ -12,3 +15,4 @@ Based on the stream socket client demo contained in Beej's Guide to Network Prog
   * ct: TCP client
   * s: server
 * -d: debug mode 
+```
