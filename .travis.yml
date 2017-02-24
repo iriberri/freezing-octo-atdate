@@ -1,5 +1,7 @@
-dist: precise
-sudo: false
+language: c
+os: 
+- osx
+- linux
 
 cache: ccache
 
