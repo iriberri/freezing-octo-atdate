@@ -6,6 +6,7 @@ os:
 cache: ccache
 
 script:
+- echo $PATH
 - ls -al $HOME/.ccache
 - ls -al $HOME/ccache
 - ccache -s
