@@ -1,0 +1,9 @@
+dist: precise
+sudo: false
+
+cache: ccache
+
+script:
+- ccache -s
+- make
+- ccache -s
