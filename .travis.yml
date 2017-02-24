@@ -6,6 +6,10 @@ os:
 cache: ccache
 
 script:
+- ls -al $HOME/.ccache
+- ls -al $HOME/ccache
 - ccache -s
 - make
 - ccache -s
+- ls -al $HOME/.ccache
+- ls -al $HOME/ccache
