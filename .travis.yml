@@ -5,6 +5,9 @@ os:
 
 cache: ccache
 
+before_install:
+- brew install --HEAD ccache
+
 script:
 - echo $PATH
 - ls -al $HOME/.ccache
