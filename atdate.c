@@ -18,7 +18,7 @@
 #include <errno.h>
 
 
-#define BACKLOG 10
+#define BACKLOG 11
 #define MAX_DATA_SIZE 100
 #define CLIENT_UDP_MODE 2
 #define CLIENT_TCP_MODE 1
