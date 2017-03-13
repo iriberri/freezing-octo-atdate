@@ -7,9 +7,9 @@ cache:
 
 before_install:
 - ls -al $HOME/.ccache
-- ls -al $HOME/ccache
-- ls -al $HOME
 - brew install --HEAD ccache
+- ls -al $HOME/.ccache
+
 
 script:
 - echo $PATH
@@ -17,5 +17,3 @@ script:
 - make
 - ccache -s
 - ls -al $HOME/.ccache
-- ls -al $HOME/ccache
-- ls -al $HOME
