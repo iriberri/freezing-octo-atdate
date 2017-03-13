@@ -1,19 +1,21 @@
 language: c
-os: 
-- osx
-- linux
+os: osx
 
-cache: ccache
+cache: 
+  directories:
+    - $HOME/.ccache
 
 before_install:
+- ls -al $HOME/.ccache
+- ls -al $HOME/ccache
+- ls -al $HOME
 - brew install --HEAD ccache
 
 script:
 - echo $PATH
-- ls -al $HOME/.ccache
-- ls -al $HOME/ccache
 - ccache -s
 - make
 - ccache -s
 - ls -al $HOME/.ccache
 - ls -al $HOME/ccache
+- ls -al $HOME
