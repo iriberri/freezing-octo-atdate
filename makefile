@@ -8,3 +8,4 @@ atdate: atdate.o
 atdate.o: atdate.c
 	ccache gcc -c atdate.c
 
+
