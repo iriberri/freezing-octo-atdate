@@ -2,9 +2,7 @@ language: objective-c
 os: osx
 
 before_install:
-- ls -al $HOME/.ccache
 - brew install ccache
-- ls -al $HOME/.ccache
 
 
 script:
